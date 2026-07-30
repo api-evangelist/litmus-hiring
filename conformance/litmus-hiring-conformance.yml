@@ -1,0 +1,31 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/litmus-hiring-openapi.yml
+standards:
+  - id: oauth2
+    conforms: true
+    evidence: >-
+      Hosted MCP server uses Clerk OAuth (authorization code + PKCE);
+      RFC 8414 authorization-server metadata published at
+      /.well-known/oauth-authorization-server.
+  - id: oidc
+    conforms: true
+    evidence: OAuth metadata advertises openid scope, id_token RS256, jwks_uri.
+  - id: rfc8414-as-metadata
+    conforms: true
+    evidence: well-known/litmus-hiring-oauth-authorization-server.json (200)
+  - id: pkce-rfc7636
+    conforms: true
+    evidence: code_challenge_methods_supported includes S256.
+  - id: mcp
+    conforms: true
+    evidence: Official hosted Model Context Protocol server (https://litmushiring.com/docs/mcp).
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: No application/problem+json error envelope documented.
+  - id: scim
+    conforms: false
+  - id: fhir-r4
+    conforms: false
+  - id: json-api
+    conforms: false

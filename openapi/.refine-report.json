@@ -1,0 +1,18 @@
+{
+  "provider": "litmus-hiring",
+  "sources": [
+    "litmus-hiring-invites-api-openapi.yml",
+    "litmus-hiring-roles-api-openapi.yml",
+    "litmus-hiring-submissions-api-openapi.yml"
+  ],
+  "outputs": [
+    "litmus-hiring-invites-api-openapi.yml",
+    "litmus-hiring-roles-api-openapi.yml",
+    "litmus-hiring-submissions-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

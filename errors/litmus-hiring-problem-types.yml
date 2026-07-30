@@ -1,0 +1,26 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/litmus-hiring-openapi.yml
+docs: https://litmushiring.com/docs/rest
+format: unspecified
+notes: >-
+  Derived from the documented REST behavior. Litmus does not publish an RFC 9457
+  problem+json error catalog; only the 401 semantics and standard HTTP status
+  codes are documented. Envelope shape is unspecified.
+problems:
+  - status: 401
+    title: Unauthorized
+    detail: Missing, malformed, or revoked API credentials.
+    remediation: >-
+      Send a valid organization API key as `Authorization: Bearer litmus_sk_...`.
+      Preserve trailing slashes on URLs so the header is not dropped on redirect;
+      rotate revoked keys in Settings -> API Keys.
+    source_operations:
+      - openapi/litmus-hiring-openapi.yml#listRoles
+      - openapi/litmus-hiring-openapi.yml#createInvite
+      - openapi/litmus-hiring-openapi.yml#getSubmission
+  - status: 404
+    title: Not found
+    detail: The requested submission does not exist or is not visible to your organization.
+    source_operations:
+      - openapi/litmus-hiring-openapi.yml#getSubmission

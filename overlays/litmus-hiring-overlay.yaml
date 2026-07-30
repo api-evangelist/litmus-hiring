@@ -1,0 +1,23 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Litmus Hiring REST API
+  version: 1.0.0
+extends: openapi/litmus-hiring-openapi.yml
+actions:
+  - target: $.info
+    update:
+      x-apievangelist-enriched: true
+      x-apievangelist-provenance: >-
+        Spec generated from the provider's published REST reference; no
+        machine-readable OpenAPI is published by Litmus.
+      x-industry: hiring
+      x-mcp-server: https://litmushiring.com/docs/mcp
+  - target: $.paths./invites.post
+    update:
+      x-idempotency: not-supported
+      x-side-effect: sends a candidate-facing invitation
+  - target: $.paths['/submissions/{id}'].get
+    update:
+      x-polling: >-
+        Webhooks are not available; poll this operation (or the MCP list tools)
+        to retrieve submission results.

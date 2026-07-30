@@ -1,0 +1,46 @@
+generated: '2026-07-20'
+method: searched
+source: https://litmushiring.com/docs/rest
+docs: https://litmushiring.com/docs/mcp/authentication
+summary:
+  types: [http, oauth2]
+  http_schemes: [bearer]
+  oauth2_flows: [authorizationCode]
+  notes: >-
+    The REST API uses an organization-scoped bearer API key. The hosted MCP
+    server additionally supports Clerk OAuth (authorization code + PKCE) for
+    interactive agent clients, and the same API key for headless automation.
+schemes:
+  - name: bearerApiKey
+    type: http
+    scheme: bearer
+    key_prefix: litmus_sk_
+    location: 'Authorization: Bearer litmus_sk_...'
+    scope: organization
+    issued_at: Dashboard -> Settings -> API Keys
+    surfaces: [rest, mcp]
+    notes: >-
+      A 401 indicates a missing, malformed, or revoked credential. Keys are
+      production secrets; rotate regularly. Preserve trailing slashes on URLs to
+      avoid Authorization-header drops (401) during redirects.
+    sources: [openapi/litmus-hiring-openapi.yml, https://litmushiring.com/docs/rest]
+  - name: clerkOAuth
+    type: oauth2
+    surfaces: [mcp]
+    provider: Clerk
+    flows:
+      - flow: authorizationCode
+        authorizationUrl: https://clerk.litmushiring.com/oauth/authorize
+        tokenUrl: https://clerk.litmushiring.com/oauth/token
+        revocationUrl: https://clerk.litmushiring.com/oauth/token/revoke
+        registrationUrl: https://clerk.litmushiring.com/oauth/register
+        pkce: S256
+        scopes:
+          - openid
+          - profile
+          - email
+          - public_metadata
+          - private_metadata
+          - offline_access
+          - user:org:read
+    sources: [well-known/litmus-hiring-oauth-authorization-server.json]

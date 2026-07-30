@@ -1,0 +1,16 @@
+generated: '2026-07-20'
+method: searched
+host: https://www.litmushiring.com
+documents:
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    file: litmus-hiring-oauth-authorization-server.json
+    note: RFC 8414 authorization-server metadata, Clerk-backed (issuer clerk.litmushiring.com)
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404

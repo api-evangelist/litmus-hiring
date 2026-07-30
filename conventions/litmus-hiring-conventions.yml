@@ -1,0 +1,52 @@
+generated: '2026-07-20'
+method: searched
+source: https://litmushiring.com/docs/rest
+docs:
+  rest: https://litmushiring.com/docs/rest
+  mcp: https://litmushiring.com/docs/mcp
+authentication:
+  style: bearer-api-key
+  header: 'Authorization: Bearer litmus_sk_...'
+  scope: organization
+  ref: authentication/litmus-hiring-authentication.yml
+versioning:
+  scheme: uri-path
+  current: v1
+  stability: >-
+    v1 is frozen as a stable contract (semantic versioning); breaking changes
+    ship under a new major version path.
+  ref: lifecycle/litmus-hiring-lifecycle.yml
+pagination:
+  style: cursor
+  surface: mcp
+  request_params: [limit, cursor]
+  defaults: { limit: 50 }
+  response_fields: [items, nextCursor]
+  notes: >-
+    Cursor pagination is documented on the MCP list tools (list_submissions,
+    list_candidates); the response returns items[] and nextCursor (null on the
+    last page). The three documented REST endpoints do not publish a pagination
+    contract of their own.
+idempotency:
+  supported: false
+  notes: >-
+    Litmus does not document an idempotency-key header or contract for the REST
+    API. Do not assume safe retries on POST /invites.
+webhooks:
+  supported: false
+  notes: >-
+    Webhooks are not yet available. Polling (e.g. GET /submissions/{id}, or the
+    MCP list tools) is the current mechanism for retrieving results.
+  ref: lifecycle/litmus-hiring-lifecycle.yml
+rate_limiting:
+  signaled: false
+  notes: >-
+    Rate limiting is currently unrestricted; the docs advise against excessive
+    requests. No documented rate-limit response headers.
+errors:
+  envelope: unspecified
+  documented_status_codes: [401, 404]
+  ref: errors/litmus-hiring-problem-types.yml
+  notes: >-
+    401 is documented for missing/malformed/revoked credentials. No RFC 9457
+    problem+json envelope is documented.

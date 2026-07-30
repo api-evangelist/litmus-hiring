@@ -1,0 +1,30 @@
+generated: '2026-07-20'
+method: searched
+source: well-known/litmus-hiring-oauth-authorization-server.json
+docs: https://clerk.com/docs/oauth/scoped-access
+notes: >-
+  OAuth scopes apply to the hosted MCP server's Clerk OAuth flow (interactive
+  agent clients). The REST API itself is authenticated with an
+  organization-scoped bearer API key and does not expose a scope surface.
+schemes:
+  - name: clerkOAuth
+    source: well-known/litmus-hiring-oauth-authorization-server.json
+    flows:
+      - flow: authorizationCode
+        authorizationUrl: https://clerk.litmushiring.com/oauth/authorize
+        tokenUrl: https://clerk.litmushiring.com/oauth/token
+scopes:
+  - scope: openid
+    description: OpenID Connect sign-in; issue an ID token identifying the user.
+  - scope: profile
+    description: Access the user's basic profile claims (name).
+  - scope: email
+    description: Access the user's email address.
+  - scope: public_metadata
+    description: Read the user's public metadata.
+  - scope: private_metadata
+    description: Read the user's private metadata.
+  - scope: offline_access
+    description: Issue a refresh token for long-lived, non-interactive access.
+  - scope: 'user:org:read'
+    description: Read the user's organization membership and organization-scoped data.

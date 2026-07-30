@@ -1,0 +1,14 @@
+generated: '2026-07-20'
+method: generated
+source: openapi/litmus-hiring-openapi.yml + https://litmushiring.com/docs/mcp/tools
+skills:
+  - file: litmus-hiring-track-submissions.md
+    name: Track Litmus submissions for a role
+    api: openapi/litmus-hiring-openapi.yml
+    operations: [listRoles, getSubmission]
+    mcp_tools: [list_submissions, get_submission, get_pipeline_status, list_candidates, get_candidate_status]
+  - file: litmus-hiring-invite-and-assess.md
+    name: Author an assessment and invite a candidate
+    api: openapi/litmus-hiring-openapi.yml
+    operations: [listRoles, createInvite]
+    mcp_tools: [upload_assessment, get_assessment_files, update_assessment_files]

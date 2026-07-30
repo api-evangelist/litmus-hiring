@@ -1,0 +1,68 @@
+generated: '2026-07-20'
+method: derived
+source:
+  - openapi/litmus-hiring-openapi.yml
+  - https://litmushiring.com/docs/mcp/tools
+notes: >-
+  Entity graph derived from the documented REST endpoints and MCP tool argument
+  and return shapes. Field-level schemas are not published by Litmus, so
+  relationships are inferred from id-reference arguments (role_id, candidate_id,
+  submission_id, assessment_id) and documented return objects.
+entities:
+  - name: Role
+    description: An open role within the organization; the unit a pipeline is built around.
+    fields: [id]
+    id_argument: role_id
+  - name: Candidate
+    description: A person in the org's hiring pipeline, with a currentStage, source, and ATS provider.
+    fields: [id, currentStage, source, atsProvider]
+    id_argument: candidate_id
+  - name: Invite
+    description: An invitation sent to a candidate for a role/assessment.
+  - name: Assessment
+    description: A project-based technical assessment built from caller-supplied files; versioned.
+    fields: [assessmentId, version, files]
+    id_argument: assessment_id
+  - name: Submission
+    description: A candidate's completed assessment, with report summary and artifact URLs.
+    fields: [id, status, zipUrl, videoUrl, videoTranscript, report]
+    id_argument: submission_id
+  - name: PipelineStatus
+    description: Disjoint stage counts for one role (invited, in_progress, pending_review, advanced, rejected, expired).
+relationships:
+  - from: Candidate
+    to: Role
+    type: belongs_to
+    via: role_id
+  - from: Invite
+    to: Candidate
+    type: belongs_to
+    via: candidate_id
+  - from: Invite
+    to: Role
+    type: belongs_to
+    via: role_id
+  - from: Submission
+    to: Candidate
+    type: belongs_to
+    via: candidate_id
+  - from: Submission
+    to: Role
+    type: belongs_to
+    via: role_id
+  - from: Submission
+    to: Assessment
+    type: belongs_to
+    via: assessment
+  - from: Assessment
+    to: Role
+    type: belongs_to
+    via: role_id
+  - from: Role
+    to: Candidate
+    type: has_many
+    via: role_id
+  - from: Role
+    to: Submission
+    type: has_many
+    via: role_id

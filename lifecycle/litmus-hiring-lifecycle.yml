@@ -1,0 +1,20 @@
+generated: '2026-07-20'
+method: searched
+source: https://litmushiring.com/docs/rest
+versioning:
+  scheme: uri-path
+  current: v1
+  stability: v1 frozen as a stable contract (semantic versioning)
+  docs: https://litmushiring.com/docs/rest
+deprecation:
+  policy_url: null
+  sunset_header: false
+  notes: No documented deprecation/sunset policy; v1 is described as a frozen stable contract.
+sla:
+  url: null
+  uptime_target: null
+status_page: null
+webhooks:
+  available: false
+  notes: Webhooks not yet available; polling is the documented mechanism.
+deprecated_operations: []
