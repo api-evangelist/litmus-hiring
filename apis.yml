@@ -1,22 +1,139 @@
 aid: litmus-hiring
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/litmus-hiring.png
 name: Litmus Hiring
-description: Litmus Hiring is a company surfaced as a portfolio company of y-combinator and added to the
-  API Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: >-
+  Litmus is a Y Combinator-backed technical hiring platform that turns
+  repositories, engineering tickets, and job descriptions into structured,
+  project-based technical assessments and interview pipelines tailored to how a
+  team actually ships. It evaluates candidates on both code quality and
+  development process, lets them work in their own IDE or terminal, and captures
+  AI-tool usage (Claude Code, Copilot CLI) transparently. Candidate management
+  syncs with the Ashby, Greenhouse, and Lever applicant-tracking systems. Litmus
+  exposes a bearer-key REST API (roles, invites, submissions) and an official
+  hosted Model Context Protocol (MCP) server for agent-driven access to
+  submissions, candidates, pipeline status, and assessment authoring.
 url: https://raw.githubusercontent.com/api-evangelist/litmus-hiring/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - y-combinator
-x-tier: stub
-x-tier-reason: portfolio-lead
+x-tier: profiled
+x-tier-reason: enriched-from-provider-surface
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-20'
 tags:
 - Company
-apis: []
+- Hiring
+- Recruitment
+- Technical Assessment
+- Developer Hiring
+- MCP
+- Interviewing
+- Y Combinator
+common:
+- url: https://litmushiring.com
+  type: Website
+- url: https://litmushiring.com/docs
+  type: DeveloperPortal
+- url: https://litmushiring.com/docs
+  type: Documentation
+- url: https://litmushiring.com/docs/rest
+  type: APIReference
+- url: https://litmushiring.com/docs/mcp/quickstart
+  type: GettingStarted
+- url: https://litmushiring.com/privacy
+  type: PrivacyPolicy
+- url: https://litmushiring.com/terms
+  type: TermsOfService
+- url: mailto:support@litmushiring.com
+  type: Support
+- url: mcp/litmus-hiring-mcp.yml
+  type: MCPServer
+- url: authentication/litmus-hiring-authentication.yml
+  type: Authentication
+- url: scopes/litmus-hiring-scopes.yml
+  type: OAuthScopes
+- url: conventions/litmus-hiring-conventions.yml
+  type: Conventions
+- url: errors/litmus-hiring-problem-types.yml
+  type: ErrorCatalog
+- url: lifecycle/litmus-hiring-lifecycle.yml
+  type: Lifecycle
+- url: conformance/litmus-hiring-conformance.yml
+  type: Conformance
+- url: data-model/litmus-hiring-data-model.yml
+  type: DataModel
+- url: well-known/litmus-hiring-well-known.yml
+  type: WellKnown
+- url: llms/litmus-hiring-llms.txt
+  type: LLMsTxt
+- url: skills/_index.yml
+  type: AgentSkill
+- url: security/litmus-hiring-domain-security.yml
+  type: DomainSecurity
+apis:
+- aid: litmus-hiring:litmus-hiring-invites-api
+  name: Litmus Hiring Invites API
+  description: Candidate invitations
+  humanURL: https://litmushiring.com/docs/rest
+  baseURL: https://www.litmushiring.com/api/v1
+  tags:
+  - Invites
+  properties:
+  - type: OpenAPI
+    url: openapi/litmus-hiring-invites-api-openapi.yml
+  - type: Documentation
+    url: https://litmushiring.com/docs/rest
+  - type: APIReference
+    url: https://litmushiring.com/docs/rest
+- aid: litmus-hiring:litmus-hiring-roles-api
+  name: Litmus Hiring Roles API
+  description: Open roles within your organization
+  humanURL: https://litmushiring.com/docs/rest
+  baseURL: https://www.litmushiring.com/api/v1
+  tags:
+  - Roles
+  properties:
+  - type: OpenAPI
+    url: openapi/litmus-hiring-roles-api-openapi.yml
+  - type: Documentation
+    url: https://litmushiring.com/docs/rest
+  - type: APIReference
+    url: https://litmushiring.com/docs/rest
+- aid: litmus-hiring:litmus-hiring-submissions-api
+  name: Litmus Hiring Submissions API
+  description: Candidate assessment submissions
+  humanURL: https://litmushiring.com/docs/rest
+  baseURL: https://www.litmushiring.com/api/v1
+  tags:
+  - Submissions
+  properties:
+  - type: OpenAPI
+    url: openapi/litmus-hiring-submissions-api-openapi.yml
+  - type: Documentation
+    url: https://litmushiring.com/docs/rest
+  - type: APIReference
+    url: https://litmushiring.com/docs/rest
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+x-enrichment:
+  date: '2026-07-20'
+  status: enriched
+  artifacts_added: 17
+  pass: local-v1
