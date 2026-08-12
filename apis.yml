@@ -44,6 +44,8 @@ tags:
 - Interviewing
 - Y Combinator
 common:
+- type: Overlay
+  url: overlays/litmus-hiring-overlay.yaml
 - url: https://litmushiring.com
   type: Website
 - url: https://litmushiring.com/docs
