@@ -1,0 +1,187 @@
+{
+  "item": [
+    {
+      "id": "58a3d2d7-a738-4d25-9aea-0ebc6169a3f6",
+      "name": "Invites",
+      "description": {
+        "content": "Candidate invitations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "aa76ef4c-539d-4d1c-a301-00cd07bf077b",
+          "name": "Send a candidate invitation",
+          "request": {
+            "name": "Send a candidate invitation",
+            "description": {
+              "content": "Send an invitation to a candidate for an assessment / role. The docs do not publish the full request body schema; callers supply the candidate and role details defined in the dashboard.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "invites"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ea2d4a59-25f7-4e8a-a908-4902c9476e18",
+              "name": "Invitation sent.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invites"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c3eb7d90-0f29-4b02-8985-bc3f4475ec84",
+              "name": "Missing, malformed, or revoked credentials.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "invites"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://www.litmushiring.com/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "0cde935b-fa65-4e89-8a11-44250a356444",
+    "name": "Litmus Hiring REST Invites API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for the Litmus technical hiring platform. Litmus turns repositories, engineering tickets, and job descriptions into structured, project-based technical assessments and interview pipelines, and syncs candidate management with Ashby, Greenhouse, and Lever. This specification was GENERATED by the API Evangelist enrichment pipeline from the provider's published REST reference (https://litmushiring.com/docs/rest); Litmus does not (yet) publish a machine-readable OpenAPI document. Only operations, paths, the base URL, and the authentication scheme that are explicitly documented are represented here. Request/response bodies are modeled loosely where the docs do not publish field-level schemas — nothing is fabricated.\n\nContact Support:\n Name: Litmus Support\n Email: support@litmushiring.com",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Litmus Hiring REST Invites API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Invites",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Send a candidate invitation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://www.litmushiring.com/api/v1/invites",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Send an invitation to a candidate for an assessment / role. The docs do not publish the full request body schema; callers supply the candidate and role details defined in the dashboard."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

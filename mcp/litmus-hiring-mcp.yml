@@ -6,52 +6,79 @@ server:
   name: litmus
   transport: http
   url: https://litmushiring.com/mcp/<your-org-id>/
-  description: >-
-    Official hosted Model Context Protocol server for the Litmus hiring
-    platform. Connects Claude Desktop, Claude Code, or Cursor (via Clerk OAuth)
-    and headless/automation clients (via a `litmus_sk_...` API key). All MCP
-    tool calls are audited in the dashboard. Preserve the trailing slash on the
-    server URL to avoid Authorization-header drops (401) during redirects.
+  description: Official hosted Model Context Protocol server for the Litmus hiring platform. Connects
+    Claude Desktop, Claude Code, or Cursor (via Clerk OAuth) and headless/automation clients (via a `litmus_sk_...`
+    API key). All MCP tool calls are audited in the dashboard. Preserve the trailing slash on the server
+    URL to avoid Authorization-header drops (401) during redirects.
   authentication:
-    - method: oauth2
-      description: Clerk OAuth for interactive clients (Claude Desktop, Claude Code, Cursor).
-      authorization_server: https://clerk.litmushiring.com
-    - method: apiKey
-      description: Bearer API key (litmus_sk_...) for headless/automation scenarios.
+  - method: oauth2
+    description: Clerk OAuth for interactive clients (Claude Desktop, Claude Code, Cursor).
+    authorization_server: https://clerk.litmushiring.com
+  - method: apiKey
+    description: Bearer API key (litmus_sk_...) for headless/automation scenarios.
   docs:
     quickstart: https://litmushiring.com/docs/mcp/quickstart
     authentication: https://litmushiring.com/docs/mcp/authentication
     tools: https://litmushiring.com/docs/mcp/tools
 tools:
-  - name: list_submissions
-    description: Paginated list of submissions in your org, ordered by submitted-at descending.
-    arguments: [role_id, candidate_id, status, limit, cursor]
-    returns: object with items[] and nextCursor (null on last page)
-  - name: get_submission
-    description: >-
-      Complete details for one submission including candidate, assessment, role,
-      report summary, and artifact URLs (zipUrl, videoUrl, videoTranscript,
-      optional report).
-    arguments: [submission_id]
-  - name: get_pipeline_status
-    description: Disjoint stage counts for one role (invited, in_progress, pending_review, advanced, rejected, expired).
-    arguments: [role_id]
-  - name: list_candidates
-    description: Paginated list of candidates in your org, including those without submissions.
-    arguments: [role_id, stage, limit, cursor]
-    returns: object with items[] and nextCursor
-  - name: get_candidate_status
-    description: Full status detail for one candidate with lifecycle timestamps, source, ATS provider, assessment, and role.
-    arguments: [candidate_id]
-  - name: upload_assessment
-    description: Create a new assessment from caller-supplied files; available immediately as a draft.
-    arguments: [name, files, language, time_limit, role_id]
-    returns: '{ assessmentId }'
-  - name: get_assessment_files
-    description: Retrieve current assessment files and version information.
-    arguments: [assessment_id]
-    returns: assessment metadata with version and files[]
-  - name: update_assessment_files
-    description: Replace the file set for an existing assessment, with optional version-based concurrency control.
-    arguments: [assessment_id, files, expected_version]
-    returns: updated assessmentId and new version number
+- name: list_submissions
+  description: Paginated list of submissions in your org, ordered by submitted-at descending.
+  arguments:
+  - role_id
+  - candidate_id
+  - status
+  - limit
+  - cursor
+  returns: object with items[] and nextCursor (null on last page)
+- name: get_submission
+  description: Complete details for one submission including candidate, assessment, role, report summary,
+    and artifact URLs (zipUrl, videoUrl, videoTranscript, optional report).
+  arguments:
+  - submission_id
+- name: get_pipeline_status
+  description: Disjoint stage counts for one role (invited, in_progress, pending_review, advanced, rejected,
+    expired).
+  arguments:
+  - role_id
+- name: list_candidates
+  description: Paginated list of candidates in your org, including those without submissions.
+  arguments:
+  - role_id
+  - stage
+  - limit
+  - cursor
+  returns: object with items[] and nextCursor
+- name: get_candidate_status
+  description: Full status detail for one candidate with lifecycle timestamps, source, ATS provider, assessment,
+    and role.
+  arguments:
+  - candidate_id
+- name: upload_assessment
+  description: Create a new assessment from caller-supplied files; available immediately as a draft.
+  arguments:
+  - name
+  - files
+  - language
+  - time_limit
+  - role_id
+  returns: '{ assessmentId }'
+- name: get_assessment_files
+  description: Retrieve current assessment files and version information.
+  arguments:
+  - assessment_id
+  returns: assessment metadata with version and files[]
+- name: update_assessment_files
+  description: Replace the file set for an existing assessment, with optional version-based concurrency
+    control.
+  arguments:
+  - assessment_id
+  - files
+  - expected_version
+  returns: updated assessmentId and new version number
+deployment:
+  mode: remote
+  endpoint: https://litmushiring.com/mcp/
+  verified: probed
+  probe: gated
+  checked: '2026-08-12'
+  source: catalog MCP census
