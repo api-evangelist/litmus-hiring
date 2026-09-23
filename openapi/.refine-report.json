@@ -1,9 +1,7 @@
 {
   "provider": "litmus-hiring",
   "sources": [
-    "litmus-hiring-invites-api-openapi.yml",
-    "litmus-hiring-roles-api-openapi.yml",
-    "litmus-hiring-submissions-api-openapi.yml"
+    "_original/litmus-hiring-openapi.yml"
   ],
   "outputs": [
     "litmus-hiring-invites-api-openapi.yml",
@@ -13,6 +11,14 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "litmus-hiring-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "litmus-hiring-invites-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "litmus-hiring-roles-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "litmus-hiring-submissions-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
