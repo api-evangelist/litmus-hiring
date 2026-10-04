@@ -65,6 +65,9 @@ tags_raw:
 - Interviewing
 - Y Combinator
 common:
+- type: CapabilityMap
+  url: capabilities/litmus-hiring-capability-edges.yml
+  name: Litmus Hiring Business Capability Map
 - type: Overlay
   url: overlays/litmus-hiring-overlay.yaml
 - url: https://litmushiring.com

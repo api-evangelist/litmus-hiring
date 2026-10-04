@@ -1,0 +1,33 @@
+slug: litmus-hiring
+provider: Litmus Hiring
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 2
+edges:
+- tag: Invites
+  spec_file: litmus-hiring-invites-api-openapi.yml
+  capability_id: BC-300.10
+  capability_id_l1: BC-300
+  capability_name: Talent Acquisition Management
+  confidence: 0.88
+  evidence: POST /invites  createInvite  Send a candidate invitation
+  reason: Sending candidate invitations on a technical hiring platform is squarely recruiting/hiring activity
+    under Talent Acquisition Management.
+- tag: Submissions
+  spec_file: litmus-hiring-submissions-api-openapi.yml
+  capability_id: BC-300.10
+  capability_id_l1: BC-300
+  capability_name: Talent Acquisition Management
+  confidence: 0.78
+  evidence: GET /submissions/{id}  getSubmission — REST API for the Litmus technical hiring platform
+  reason: Retrieval of candidate assessment submissions is part of the recruiting/candidate-evaluation
+    pipeline, i.e. Talent Acquisition Management. Thin spec detail lowers confidence.
